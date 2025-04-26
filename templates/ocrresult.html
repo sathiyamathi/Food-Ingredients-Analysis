@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Smart Food Advisor</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="../static/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="../static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../static/lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="../static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+        <!-- Template Stylesheet -->
+        <link href="../static/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a href="{{url_for('home')}}" class="navbar-brand">Food<span>Ingredients</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="{{url_for('ocr')}}" class="nav-item nav-link active">OCR</a>
+                        
+                        <li><p style="color: white;"  class="nav-item nav-link" > Welcome!</p></li>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+        
+        
+        <!-- Page Header Start -->
+        <div class="page-header mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Food Ingredients</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="">Home</a>
+                        <a href="">Label Detection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        
+
+        <!-- Booking Start -->
+        <div class="booking">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <div class="booking-content">
+                            <div class="section-header">
+                                <h2> Discover What's in Your Food!</h2>
+                            </div>
+                            <div class="about-text">
+                                <p>
+                                    {{ message }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chatbot" class="main-card collapsed">
+                        <button id="chatbot_toggle">
+                          <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                      </svg>
+                        </button>
+                        <div class="main-title">
+                          <div>
+                            <svg viewBox="0 0 640 512" title="robot">
+                              <path fill="currentColor" d="M32,224H64V416H32A31.96166,31.96166,0,0,1,0,384V256A31.96166,31.96166,0,0,1,32,224Zm512-48V448a64.06328,64.06328,0,0,1-64,64H160a64.06328,64.06328,0,0,1-64-64V176a79.974,79.974,0,0,1,80-80H288V32a32,32,0,0,1,64,0V96H464A79.974,79.974,0,0,1,544,176ZM264,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,264,256Zm-8,128H192v32h64Zm96,0H288v32h64ZM456,256a40,40,0,1,0-40,40A39.997,39.997,0,0,0,456,256Zm-8,128H384v32h64ZM640,256V384a31.96166,31.96166,0,0,1-32,32H576V224h32A31.96166,31.96166,0,0,1,640,256Z" />
+                            </svg>
+                          </div>
+                          <span>
+                            <i class="fas fa-bug"></i> FoodLabel  <i class="fas fa-bug"></i>
+                      
+                          </span>
+                      
+                        </div>
+                        <!-- partial:index.partial.html -->
+                      
+                        <main class="msger-chat">
+                          <div class="msg left-msg">
+                            <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+                      
+                              <div class="msg-bubble">
+                                <div class="msg-info">
+                                  <div class="msg-info-name"> FoodLabel </div>
+                                
+                                  <div class="msg-info-time"><time id="clock"></time></div>
+                      
+                      
+                                </div>
+                                <div class="msg-text">
+                                    Ask your doubts and queries!
+                               
+                               
+                                              </div>
+                              </div>
+                              
+                            </div>
+                          </main>
+                          <form class="msger-inputarea">
+                            <input type="text" class="msger-input" id="textInput" placeholder="Enter your message..." value="{{message}}">
+                            <button type="submit" class="msger-send-btn">Send</button>
+                            
+                      
+                          <p id="instructions"></p>
+                          </form>
+                          </div>
+                
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/lib/easing/easing.min.js"></script>
+        <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+        <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="{{ url_for('static', filename='js/bot.js') }}"></script>
+       
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="../static/js/main.js"></script>
+    </body>
+</html>
